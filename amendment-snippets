@@ -1,0 +1,30 @@
+//original snippets:
+if (customProxyIP) {
+        proxyConfig = parsePryAddress(customProxyIP);
+        if (proxyConfig && (proxyConfig.type === 'socks5' || proxyConfig.type === 'http' || proxyConfig.type === 'https')) {
+            shouldUseProxy = true;
+        } else if (!proxyConfig) {
+            proxyConfig = parsePryAddress(proxyIP) || { type: 'direct', host: proxyIP, port: 443 };
+        }
+    } else {
+        proxyConfig = parsePryAddress(proxyIP) || { type: 'direct', host: proxyIP, port: 443 };
+        if (proxyConfig.type === 'socks5' || proxyConfig.type === 'http' || proxyConfig.type === 'https') {
+            shouldUseProxy = true;
+        }
+    }
+
+//new snippets:
+if (customProxyIP) {
+        proxyConfig = parsePryAddress(customProxyIP);
+        if (proxyConfig && (proxyConfig.type === 'socks5' || proxyConfig.type === 'http' || proxyConfig.type === 'https' || proxyConfig.type === 'direct')) {
+            shouldUseProxy = true;
+        } else if (!proxyConfig) {
+            proxyConfig = parsePryAddress(proxyIP) || { type: 'direct', host: proxyIP, port: 443 };
+        }
+    } else {
+        proxyConfig = parsePryAddress(proxyIP) || { type: 'direct', host: proxyIP, port: 443 };
+        if (proxyConfig.type === 'socks5' || proxyConfig.type === 'http' || proxyConfig.type === 'https' || proxyConfig.type === 'direct') {
+            shouldUseProxy = true;
+        }
+    }
+    
